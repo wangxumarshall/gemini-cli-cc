@@ -1,0 +1,7 @@
+{
+  "name": "gemini",
+  "description": "Call Google Gemini CLI natively in Claude Code to perform code reviews and agentic task delegation.",
+  "version": "1.0.0",
+  "author": { "name": "Google Gemini Community" },
+  "repository": "https://github.com/google-gemini/gemini-plugin-cc"
+}

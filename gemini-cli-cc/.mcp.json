@@ -1,0 +1,17 @@
+{
+  "tools": [
+    {
+      "name": "gemini_execute",
+      "description": "Execute any natural language task or script using Google's Gemini CLI natively.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "prompt": { "type": "string" },
+          "background": { "type": "boolean" },
+          "model": { "type": "string" }
+        },
+        "required": ["prompt"]
+      }
+    }
+  ]
+}
