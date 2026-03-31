@@ -1,9 +1,15 @@
 {
+  "description": "Optional stop-time review gate for Gemini Companion.",
   "hooks": {
-    "PostToolUse": [
+    "Stop": [
       {
-        "matcher": ".*review.*",
-        "hooks": [{ "type": "command", "command": "gemini -p 'Perform a detailed review of the previous tool execution focusing on maintainability, performance, and best practices. Please provide any feedback for the user.'" }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/gemini-companion.mjs\" stop-gate",
+            "timeout": 300
+          }
+        ]
       }
     ]
   }

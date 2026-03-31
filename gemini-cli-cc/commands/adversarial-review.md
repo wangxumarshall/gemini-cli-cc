@@ -1,10 +1,30 @@
-# /gemini:adversarial-review
+description: Perform an adversarial code review on local git changes
+argument-hint: '[--wait|--background] [extra focus text]'
+disable-model-invocation: true
+allowed-tools: Bash(node:*), AskUserQuestion
+---
 
-Perform an adversarial review of your local git changes.
-This prompt explicitly focuses on security vulnerabilities, questioning assumptions, finding obscure edge cases, and uncovering subtle performance issues.
+Run an adversarial Gemini review.
 
-Usage:
-/gemini:adversarial-review ["Your extra instructions"]
+Raw slash-command arguments:
+`$ARGUMENTS`
 
-Internal Execution:
-`node dist/run.js "Perform an adversarial code review on the recent changes. Actively look for security vulnerabilities, logic flaws, missing edge cases, and performance regressions. Be strict and thorough."`
+Core constraint:
+- This command is adversarial review-only. Do not fix issues yourself.
+- Return the command stdout verbatim, exactly as-is.
+
+Foreground flow:
+- Run:
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/gemini-companion.mjs" adversarial-review "$ARGUMENTS"
+```
+
+Background flow:
+- Launch with `Bash` in the background:
+```typescript
+Bash({
+  command: `node "${CLAUDE_PLUGIN_ROOT}/scripts/gemini-companion.mjs" adversarial-review "$ARGUMENTS"`,
+  description: "Gemini adversarial review",
+  run_in_background: true
+})
+```

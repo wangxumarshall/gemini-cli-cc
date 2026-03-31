@@ -1,11 +1,14 @@
-# /gemini:setup
+description: Verify the Gemini CLI setup and local installation
+argument-hint: ''
+disable-model-invocation: true
+allowed-tools: Bash(node:*), AskUserQuestion
+---
 
-Verify your Gemini CLI installation and environment configuration.
-If `gemini` is not found, it will attempt to install `@google/gemini-cli` globally for you.
-It will also verify if you have an active Google OAuth session or a `GEMINI_API_KEY` set.
+Run:
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/gemini-companion.mjs" setup $ARGUMENTS
+```
 
-Usage:
-/gemini:setup
-
-Internal Execution:
-`node dist/setup.js`
+If the result says Gemini CLI is not installed, use `AskUserQuestion` to ask the user if they'd like to install it via npm.
+- If yes, run: `npm install -g @google/gemini-cli`
+- Then rerun the setup script.

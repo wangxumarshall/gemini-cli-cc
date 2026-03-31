@@ -1,10 +1,31 @@
-# /gemini:run
+description: Delegate arbitrary task to the Gemini CLI agent
+argument-hint: '[--background|--wait] [task description]'
+disable-model-invocation: true
+allowed-tools: Bash(node:*), AskUserQuestion
+---
 
-Delegate an arbitrary agentic task to the Gemini CLI agent.
-This is similar to a "rescue" operation, letting you tap into Google's latest model directly from your workspace.
+Route this request to the Gemini Agent.
 
-Usage:
-/gemini:run "Refactor the user authentication module, support OAuth2, and add comprehensive unit tests."
+Raw user request:
+`$ARGUMENTS`
 
-Internal Execution:
-`node dist/run.js "Execute the following task: {{prompt}}"`
+Execution mode:
+- If `--background` is specified, run via `Bash(run_in_background: true)`.
+- Otherwise, run in foreground.
+
+Foreground flow:
+- Run:
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/scripts/gemini-companion.mjs" task "$ARGUMENTS"
+```
+- Return the output verbatim to the user.
+
+Background flow:
+- Launch with `Bash` in the background:
+```typescript
+Bash({
+  command: `node "${CLAUDE_PLUGIN_ROOT}/scripts/gemini-companion.mjs" task "$ARGUMENTS"`,
+  description: "Gemini task run",
+  run_in_background: true
+})
+```

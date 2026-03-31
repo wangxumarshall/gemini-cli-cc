@@ -1,14 +1,14 @@
 {
   "name": "gemini-cli-cc",
   "version": "1.0.0",
-  "description": "Call Google Gemini CLI natively in Claude Code to perform code reviews and agentic task delegation.",
-  "author": "Google Gemini Community",
+  "description": "Use Google Gemini CLI natively from Claude Code to review code or delegate tasks.",
+  "type": "module",
   "license": "MIT",
-  "scripts": {
-    "build": "tsc"
+  "author": "Google Gemini Community",
+  "engines": {
+    "node": ">=18.18.0"
   },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.0.0"
+  "scripts": {
+    "test": "echo \"No test specified\""
   }
 }
