@@ -1,5 +1,5 @@
 {
-  "name": "gemini-cli-cc",
+  "name": "gemini-plugin-cc",
   "version": "1.0.0",
   "description": "Use Google Gemini CLI natively from Claude Code to review code or delegate tasks.",
   "type": "module",

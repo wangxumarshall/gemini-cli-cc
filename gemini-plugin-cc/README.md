@@ -1,4 +1,4 @@
-# gemini-cli-cc
+# gemini-plugin-cc
 
 A Claude Code plugin that integrates the official Google Gemini CLI natively into Claude Code.
 
@@ -12,7 +12,7 @@ This plugin allows you to invoke the Gemini Agent without leaving your terminal,
    ```
 2. Install this plugin in Claude Code:
    ```bash
-   /plugin marketplace add <your-username>/gemini-cli-cc
+   /plugin marketplace add <your-username>/gemini-plugin-cc
    /plugin install gemini
    /reload-plugins
    ```
